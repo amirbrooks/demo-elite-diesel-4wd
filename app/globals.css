@@ -1,26 +1,55 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-soot: #1a1210;
+  --color-forge: #2a2018;
+  --color-iron: #3d3530;
+  --color-rust: #c45a2c;
+  --color-ember: #e87040;
+  --color-ash: #a09080;
+  --color-bone: #f0e8e0;
+  --color-smoke: #d0c8c0;
+
+  --font-heading: var(--font-teko);
+  --font-body: var(--font-outfit);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base styles */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-soot);
+  color: var(--color-bone);
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dyno lines — subtle dynamometer readout texture */
+.dyno-lines {
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      var(--color-iron) 39px,
+      var(--color-iron) 40px
+    );
+  background-size: 100% 40px;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+/* Rust border accent for service list items */
+.rust-border-left {
+  border-left: 3px solid var(--color-rust);
+  padding-left: 1rem;
+}
+
+/* Selection color */
+::selection {
+  background-color: var(--color-rust);
+  color: var(--color-bone);
 }
